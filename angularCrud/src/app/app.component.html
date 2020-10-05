@@ -1,0 +1,59 @@
+<div class="container mt-4 pt-2">
+  <div class="row">
+    <div class="col-md-6">
+      <form (submit)="addPost()" #postForm="ngForm">
+        <div class="form-group">
+          <label for="title">Titles</label>
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            [(ngModel)]="post.title"
+            placeholder="Title"
+            required
+          />
+        </div>
+
+        <div>
+          <button class="btn btn-success" type="submit">
+            {{ btnName }}
+          </button>
+          <button
+            class="btn btn-info"
+            [ngStyle]="{ display: display }"
+            type="button"
+            (click)="CancelAll()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Action</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of postList">
+            <td>{{ post.title }}</td>
+            <td>
+              <button class="btn btn-warning" (click)="editPost(post)">
+                Edit
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="deletePost(post)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
